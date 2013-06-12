@@ -17,30 +17,7 @@ class OrdenController {
         redirect(action: "list", params: params)
     }
      def springSecurityService
-    
-   /*    def export = {attrs ->
   
-  def response = attrs.response
-  println attrs.exportList
-  
-  def excluded = grails.persistence.Event.allEvents.toList() + ["mapping", "lastModifierId", "hasMany", "class", "belongsTo", "constraints", "searchable", "attached", "errors", "metaClass", "log", "object", "version", "beforeInsert", "beforeUpdate", "mappedBy", "springSecurityService", "type", "typeLabel"]
-  List fields = Orden.newInstance().properties.keySet().toList().findAll { !excluded.contains(it) && !isId(it)}
-
-  response.contentType = org.codehaus.groovy.grails.commons.ConfigurationHolder.config.grails.mime.types[attrs.format]
-  response.setHeader("Content-disposition", "attachment; filename=vitacora.\${attrs.extension}")
-  
-  exportService.export(attrs.format, response.outputStream, attrs.exportList, fields, [:], [:], [:])
- }
- 
- def isId(def label)
- {
-  label.reverse().startsWith("dI")
- }
-
-   def list(Integer max) {
-        params.max = Math.min(max ?: 20, 100)
-        [ordenInstanceList: Orden.list(params), ordenInstanceTotal: Orden.count()]
-    }*/
     def exportService
     def grailsApplication
 
@@ -66,18 +43,15 @@ class OrdenController {
         }
         else {
           
-            User usuario = User.findByUsername(springSecurityService.currentUser.username)//Obtiene el usuario logeado y lo busca en la bd r
-           def roles = springSecurityService.getPrincipal().getAuthorities()
-               //  if (SpringSecurityUtils.ifAllGranted('ROLE_USER')) {  
-                 if (SpringSecurityUtils.ifAnyGranted('ROLE_USER,ROLE_SUPERVISOR')) {  
-           
+            User usuario = User.findByUsername(springSecurityService.currentUser.username)//Obtiene el usuario logeado y lo busca en la bd r        
+                 if (SpringSecurityUtils.ifAnyGranted('ROLE_USER,ROLE_SUPERVISOR')) {           
                       
                       def ordenes = Orden.findAllByProyectoInList(usuario.proyectos,[max: params.max, sort: "id", order: "desc", offset: params.offset]) 
-                      def totalOrdenes = Orden.findAllByProyectoInList(usuario.proyectos).size() 
+                     
      
           
                     ordenInstanceList = ordenes
-                    ordenInstanceTotal = totalOrdenes
+                    ordenInstanceTotal = ordenes.size()
             }
             
            else {
