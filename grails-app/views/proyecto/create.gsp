@@ -17,6 +17,12 @@
 	  			selectionHeader: "<div class='custom-header text-center'>Centrales Seleccionadas</div>"
 			});
  		});
+                $(document).ready(function() {
+			$('#multiservicio').multiSelect({
+	 			selectableHeader: "<div class='custom-header text-center'>Servicos Disponibles</div>",
+	  			selectionHeader: "<div class='custom-header text-center'>Servicios Seleccionadas</div>"
+			});
+ 		});
 	</script>
 		<a href="#create-proyecto" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
