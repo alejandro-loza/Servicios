@@ -32,10 +32,9 @@ class OrdenController {
         
          if (session["sessionFilterOrden"] != null) {
             filterParams = session["sessionFilterOrden"]
-            params.putAll(filterParams)
-                System.out.println("con filtro sesion " + params) 
+            params.putAll(filterParams)             
             ordenInstanceList = filterPaneService.filter(params, Orden)
-           ordenInstanceTotal = filterPaneService.count(params, Orden)
+			ordenInstanceTotal = filterPaneService.count(params, Orden)
             System.out.println("lista filtrada " + ordenInstanceList) 
             System.out.println("lista total " + ordenInstanceTotal) 
              
@@ -110,16 +109,12 @@ def filterPaneService
         if (!params.max) params.max = 50
 
           def filterParams = org.grails.plugin.filterpane.FilterPaneUtils.extractFilterParams(params)
-
-        session["sessionFilterOrden"] = filterParams
-        System.out.println("filtro en session " + session.sessionFilterOrden) 
-  
-        redirect(action: "list", 
-                model: [ordenInstanceList: filterPaneService.filter( params, Orden ),
-                         ordenInstanceCount: filterPaneService.count( params, Orden ),
-                       filterParams:filterParams,
-                        params: params])
-                        
+		  session["sessionFilterOrden"] = filterParams       
+		  redirect(action: "list", 
+               			 model: [ordenInstanceList: filterPaneService.filter( params, Orden ),
+                         ordenInstanceTotal: filterPaneService.count( params, Orden ),
+						 filterParams:filterParams,
+						 params: params])                        
     }
     
 

@@ -21,15 +21,11 @@ def springSecurityService
         def usuario = User.findByUsername(springSecurityService.currentUser.username)//Obtiene el usuario logeado y lo busca en la bd r
            def roles = springSecurityService.getPrincipal().getAuthorities()
                  if (SpringSecurityUtils.ifAllGranted('ROLE_USER')) {  
-           
-                      def proyectos = UsuarioProyecto.findAllByUsuario(usuario)
-                      def enrol = proyectos.proyecto
-                      def ordenes = Orden.findAllByProyectoInList(enrol) 
-                  
+                      def ordenes = Orden.findAllByProyectoInList(usuario.proyectos)                   
                       def observaciones = Observacion.findAllByOrdenInList(ordenes,[max: params.max, sort: "id", order: "desc", offset: params.offset])
-                      def observacionesTotal = Observacion.findAllByOrdenInList(ordenes).size()
+                     
                       observacionInstanceList = observaciones
-                      observacionInstanceTotal = observacionesTotal
+                      observacionInstanceTotal = observaciones.size()
             
             
                  }

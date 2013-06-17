@@ -26,7 +26,7 @@ class Orden {
     Date dateCreated    
     Date lastUpdated 
     static hasMany = [observaciones:Observacion]
-    static hasOne = [seguimiento:Seguimiento]
+    static hasOne = [seguimiento :Seguimiento]
 
     static constraints = {
          status nullable:false, blank:false
