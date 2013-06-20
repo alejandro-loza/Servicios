@@ -31,7 +31,7 @@
 		<g:message code="TServicio.documentos.label" default="Documentos" />
 		
 	</label>
-	<g:textField name="documentos" value="${TServicioInstance?.documentos}"/>
+	<g:textArea name="documentos" value="${TServicioInstance?.documentos}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: TServicioInstance, field: 'herramienta', 'error')} ">
@@ -39,7 +39,7 @@
 		<g:message code="TServicio.herramienta.label" default="Herramienta" />
 		
 	</label>
-	<g:textField name="herramienta" value="${TServicioInstance?.herramienta}"/>
+	<g:textArea name="herramienta" value="${TServicioInstance?.herramienta}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: TServicioInstance, field: 'proyectos', 'error')} ">

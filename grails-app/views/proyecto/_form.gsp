@@ -31,7 +31,7 @@
 		<g:message code="proyecto.servicios.label" default="Servicios" />
 		
 	</label>
-	<g:select name="servicios" from="${servicios.TServicio.list()}" multiple="multiple" optionKey="id" size="5" value="${proyectoInstance?.servicios*.id}" class="many-to-many"/>
+	<g:select id="multiservicio" name="servicios" from="${servicios.TServicio.list()}" multiple="multiple" optionKey="id" size="5" value="${proyectoInstance?.servicios*.id}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: proyectoInstance, field: 'usuarios', 'error')} ">
