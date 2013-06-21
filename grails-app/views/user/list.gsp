@@ -13,6 +13,9 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				 <sec:ifLoggedIn>                                	
+                          <li><g:link controller="logout">Cerrar Sesión </g:link></li><li><sec:username /></li> 
+     			 </sec:ifLoggedIn>
 			</ul>
 		</div>
 		<div id="list-user" class="content scaffold-list" role="main">
