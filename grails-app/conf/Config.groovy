@@ -107,11 +107,8 @@ grails.plugins.springsecurity.securityConfigType = SecurityConfigType.Annotation
  grails.plugins.springsecurity.securityConfigType = SecurityConfigType.InterceptUrlMap
 grails.plugins.springsecurity.interceptUrlMap = [
     
-     '/user/':['IS_AUTHENTICATED_ANONYMOUSLY'],//['ROLE_ADMIN','ROLE_SUPERVISOR'],
-     '/user/list': ['IS_AUTHENTICATED_ANONYMOUSLY'],//['ROLE_ADMIN','ROLE_SUPERVISOR'],
-     '/user/edit':['IS_AUTHENTICATED_ANONYMOUSLY'],//['ROLE_ADMIN','ROLE_SUPERVISOR'],
-      '/user/create':['ROLE_ADMIN','ROLE_SUPERVISOR'],//['IS_AUTHENTICATED_ANONYMOUSLY'],//
-    '/user/show': ['IS_AUTHENTICATED_ANONYMOUSLY'],//['IS_AUTHENTICATED_ANONYMOUSLY'],
+     '/user/**':['ROLE_ADMIN','ROLE_SUPERVISOR'],
+     
     '/userRole/**':['ROLE_ADMIN','ROLE_SUPERVISOR'],
     '/idc/**':['ROLE_ADMIN','ROLE_SUPERVISOR'],
     '/status/**':['ROLE_ADMIN','ROLE_SUPERVISOR'],
